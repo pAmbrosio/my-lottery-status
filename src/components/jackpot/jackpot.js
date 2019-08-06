@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './jackpot.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import JackpotItem from './jackpotItem/jackpotItem';
 
@@ -23,7 +24,6 @@ const defaultGame = {
 
 
 class Jackpot extends Component {
-
   constructor () {
     super();
     this.state = {
@@ -41,15 +41,20 @@ class Jackpot extends Component {
     console.log(`1Cmon: ${this.state.last}`);
   }
 
+
   componentDidMount() {
     console.log(`2Cmon: ${this.state}`);
     this.updateJackpotData();
     document.addEventListener('scroll', this.handleScroll);
   }
 
+  /**
+   *
+   */
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
   }
+
 
   updateJackpotData () {
     fetch('http://localhost:8080/public/data/eurojackpot-status.json')

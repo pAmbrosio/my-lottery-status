@@ -1,9 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+// import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+// import App from './App';
+import Jackpot from './components/jackpot/jackpot';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+global.fetch = require('jest-fetch-mock');
+
+
+describe('General test', () => {
+  const mockSuccessResponse = {};
+  const mockJsonPromise = Promise.resolve(mockSuccessResponse); // 2
+  const mockFetchPromise = Promise.resolve({ // 3
+    json: () => mockJsonPromise
+  });
+  jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+  it('renders without crashing', () => {
+    const wrapper = shallow(<Jackpot />);
+    console.log(wrapper.debug());
+    console.log(wrapper.state());
+    expect(wrapper.exists('.jackpot-title__container')).toBe(true);
+  });
 });

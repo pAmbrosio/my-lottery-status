@@ -35,9 +35,9 @@ module.exports = {
 			'require': {
 					'FunctionDeclaration': true,
 					'MethodDefinition': true,
-					'ClassDeclaration': true,
-					'ArrowFunctionExpression': true,
-					'FunctionExpression': true
+					'ClassDeclaration': false,
+					'ArrowFunctionExpression': false,
+					'FunctionExpression': false
 			}
 		}],
 		'comma-dangle': ['error', 'never'],

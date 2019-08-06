@@ -1,0 +1,136 @@
+
+
+#jackpot .jackpot-title__container {
+  overflow: hidden;
+}
+#jackpot .jackpot-title__header {
+  animation: jackpot-logo-spin infinite 1.5s alternate;
+  background-image: url("/public/img/eurojackpot.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-indent: -20000px;
+  line-height: 5em;
+  width: 10em;
+  margin: 1em auto;
+}
+
+@keyframes jackpot-logo-spin {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+#jackpot .spacer {
+  height: 10em;
+  width: 100%;
+  margin: 0em auto;
+  overflow: hidden;
+}
+#jackpot .spacer svg {
+  z-index: -1;
+  position: relative;
+
+}
+#jackpot .spacer__hover {
+  margin: -4.5em auto;
+  transition: margin 0.5s ease-out;
+}
+#jackpot .spacer__hover svg {
+  height: 0;
+  transition: height 0.5s ease-out;
+}
+
+$jackpot-item-border: 2px solid #339911;
+.jackpot-item {
+  background-color: #FFF;
+  border-radius: 5px;
+  border: $jackpot-item-border;
+  max-width: 50em;
+  margin: 0 auto;
+  margin-top: 0;
+}
+.jackpot-item:last-child {
+  margin-bottom: none;
+}
+.jackpot-item ul {
+  list-style: none;
+}
+
+.jackpot-item__header {
+  position: relative;
+}
+.jackpot-header__title {
+  background: radial-gradient(circle, rgba(0,0,0,1) 29%, rgba(57,61,24,1) 51%, rgba(39,74,35,1) 75%, rgba(255,255,255,0) 95%);
+  line-height: 2em;
+  font-weight: bolder;
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 200%;
+  color: rgb(230, 195, 43);
+  text-shadow: 0px 0px 5px #000;
+  margin-top: -2px;
+}
+.jackpot-header__index {
+  position: relative;
+  transform: rotate(325deg);
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  color: #FFF;
+}
+.jackpot-header__index p {
+  line-height: 2.0em;
+  margin: -2.5em;
+  font-weight: bolder;
+}
+.jackpot-header__congrats {
+  font-size: 150%;
+  padding: 1em;
+}
+
+.jackpot-item__numbers {
+  border-bottom: $jackpot-item-border;
+  border-top: $jackpot-item-border;
+}
+.jackpot-item__numbers li {
+  font-family: Courier New, Courier, monospace;
+  font-size: 120%;
+  font-weight: bold;
+  display: inline-block;
+  margin: 1em;
+  border: 4px solid rgb(221, 221, 128);
+  border-radius: 1.3em;
+  line-height: 2.3em;
+  height: 2em;
+  width: 2em;
+  box-shadow: 0.5em 0.5em 0.5em #333;
+}
+.jackpot-item__numbers li.jakpot-euroNumber {
+  border-color: rgb(255, 232, 27);
+  font-weight: bolder;
+}
+
+.jackpot-item__prizes .jackpot-prizes__header {
+  font-weight: bold;
+}
+.jackpot-item__prizes span {
+  padding: 0.5em;
+  width: 22.5%;;
+  border-right: 1px solid #339911;
+  display: inline-block;
+}
+.jackpot-item__prizes span:last-child {
+  border-right: none;
+}
+.jackpot-item__prizes li {
+  width: 100%;
+  border-bottom: 1px solid #339911;
+}
+.jackpot-item__prizes li:last-child {
+  width: 100%;
+  border-bottom: none;
+}

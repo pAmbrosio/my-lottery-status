@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Utils from "../../../../utils/utils";
 
 class JackpotHeader extends Component {
@@ -23,7 +24,7 @@ class JackpotHeader extends Component {
     return(
       <div className="jackpot-item__header">
         <div className="jackpot-header__title">EuroJackpot Results for {Utils.originalDatetimeToDate(this.props.drawingDate)}</div>
-        <div className="jackpot-header__index">{this.props.nr}</div>
+        <div className="jackpot-header__index"><FontAwesomeIcon icon="star" size="3x" color="red" /><p>{this.props.nr}</p></div>
         <div className="jackpot-header__congrats">{this.headerStatusString()}</div>
       </div>
     )

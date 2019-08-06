@@ -7,6 +7,10 @@ const Utils = {
     Eur: '€'
   },
 
+  /**
+   *
+   * @param {*} dateTime
+   */
   originalDatetimeToDate (dateTime) {
     if (typeof dateTime !== 'undefined') {
       const date = dateTime.split(',');
@@ -15,7 +19,11 @@ const Utils = {
     return 'N/A';
   },
 
-
+  /**
+   *
+   * @param {*} amount
+   * @param {*} currency
+   */
   formatPrizeAmount(amount, currency) {
     if (typeof amount !== 'undefined' && !Number.isNaN(amount)) {
       if (this.Strings.EUR === currency) {
