@@ -26,7 +26,7 @@ class JackpotPrizes extends Component {
     odds.sort((a, b) => { return Number(a.id) - Number(b.id); });
     return (
       odds.map((prize) => {
-        if (prize.id !== 0) {
+        if (prize.id !== '0') {
           return (
             <li key={prize.id}>
               <span className="jackpot-prizes__pos">{prize.id}</span>
