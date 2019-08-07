@@ -1,8 +1,12 @@
-import Utils from './utils';
+import { Utils } from './utils';
 
 describe('Utils tests', () => {
   test('date conversion', () => {
-    expect(Utils.originalDatetimeToDate('26.07.2019, 20:15')).toBe('26/07/2019');
+    expect(Utils.dateFromDateTime({ day: '26', month: '07', year: '2019' })).toBe('26/07/2019');
+  });
+
+  test('time conversion', () => {
+    expect(Utils.timeFromDateTime({ hour: '12', minute: '7' })).toBe('12:07');
   });
 
   test('prize amount conversion', () => {

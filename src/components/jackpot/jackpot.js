@@ -2,60 +2,36 @@ import React, { Component } from 'react';
 import './jackpot.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import JackpotItem from './jackpotItem/jackpotItem';
+import { DefaultGame } from '../../utils/utils';
 
-const noData = <span className="loading-dots">...</span>;
-const defaultGame = {
-  nr: noData,
-  date: {
-    day: noData,
-    month: noData,
-    year: noData
-  },
-  numbers: [noData],
-  euroNumbers: [noData],
-  Winners: noData,
-  odds: {
-    rank1: {
-      winners: noData,
-      prize: noData
-    }
-  }
-};
-
-
+/**
+ * Jackpot page
+ */
 class Jackpot extends Component {
+  /** */
   constructor () {
     super();
     this.state = {
-      last: defaultGame,
-      next: {
-        nr: noData,
-        date: {
-          day: noData,
-          month: noData,
-          year: noData
-        }
-      }
+      last: DefaultGame,
+      next: DefaultGame
     };
     this.collapseSpacer = this.collapseSpacer.bind(this);
-    console.log(`1Cmon: ${this.state.last}`);
   }
 
-
+  /** */
   componentDidMount() {
-    console.log(`2Cmon: ${this.state}`);
     this.updateJackpotData();
     document.addEventListener('scroll', this.handleScroll);
   }
 
-  /**
-   *
-   */
+  /** */
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
   }
 
-
+  /**
+   * Load data from server and update component state
+   */
   updateJackpotData () {
     fetch('http://localhost:8080/public/data/eurojackpot-status.json')
       .then((response) => {
@@ -66,7 +42,6 @@ class Jackpot extends Component {
       })
       .then((result) => {
         this.setState(result);
-        console.log(result);
       })
       .catch((e) => {
         console.error(`Error: ${e}`);
@@ -74,7 +49,10 @@ class Jackpot extends Component {
       });
   }
 
-  handleScroll(evt) {
+  /**
+   * Scroll effect trigger
+   */
+  handleScroll() {
     const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
@@ -87,23 +65,29 @@ class Jackpot extends Component {
     }
   }
 
+  /**
+   * Collapse effect between boxes
+   */
   collapseSpacer() {
-    debugger;
     const el = document.querySelector('div.spacer');
     if (el) {
       el.classList.add('spacer__hover');
     }
   }
 
+  /** */
   render() {
+    const state = this.state;
     return (
       <div id="jackpot">
         <div className="jackpot-title__container">
-          <a href="#" title="Euro Jackpot"><h1 className="jackpot-title__header">Euro Jackpot</h1></a>
+          <a href="#jackpot" title="Euro Jackpot"><h1 className="jackpot-title__header">Euro Jackpot</h1></a>
         </div>
-        <JackpotItem data={this.state.last} />
-        <div className="spacer" onMouseEnter={this.collapseSpacer}><FontAwesomeIcon icon="angle-double-down" size="10x" /></div>
-        <JackpotItem data={this.state.next} />
+        <JackpotItem data={state.last} />
+        <div className="spacer" onMouseEnter={this.collapseSpacer}>
+          <FontAwesomeIcon icon="angle-double-down" size="10x" />
+        </div>
+        <JackpotItem data={state.next} next />
       </div>
     );
   }

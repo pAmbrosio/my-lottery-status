@@ -6,13 +6,15 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import Jackpot from './components/jackpot/jackpot';
 
 library.add(faAngleDoubleDown, faStar);
-
-const App = () => {
+/**
+ *
+ */
+function App() {
   return (
     <div className="App">
       <Jackpot />
     </div>
   );
-};
+}
 
 export default App;

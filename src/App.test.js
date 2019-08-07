@@ -16,8 +16,6 @@ describe('General test', () => {
   jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
   it('renders without crashing', () => {
     const wrapper = shallow(<Jackpot />);
-    console.log(wrapper.debug());
-    console.log(wrapper.state());
     expect(wrapper.exists('.jackpot-title__container')).toBe(true);
   });
 });

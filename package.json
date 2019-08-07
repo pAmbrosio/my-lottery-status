@@ -7,8 +7,9 @@
     "build": "webpack --mode production",
     "test": "jest -c ./jest.config.js --verbose",
     "test:watch": "jest -c ./jest.config.js --watchAll -i",
-    "lint": "eslint --debug src/",
-    "lint:write": "eslint --debug src/ --fix"
+    "lint": "eslint src/",
+    "lint:debug": "eslint --debug src/",
+    "lint:write": "eslint src/ --fix"
   },
   "browserslist": {
     "production": [

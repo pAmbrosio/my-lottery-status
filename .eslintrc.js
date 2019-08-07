@@ -35,29 +35,33 @@ module.exports = {
 			'require': {
 					'FunctionDeclaration': true,
 					'MethodDefinition': true,
-					'ClassDeclaration': false,
-					'ArrowFunctionExpression': false,
-					'FunctionExpression': false
+					'ClassDeclaration': true,
+					'ArrowFunctionExpression': true,
+					'FunctionExpression': true
 			}
 		}],
+		'class-methods-use-this': 'off',
 		'comma-dangle': ['error', 'never'],
 		'linebreak-style': 'off', // Don't play nicely with Windows.
 
 		'arrow-parens': 'off', // Incompatible with prettier
 		'object-curly-newline': 'off', // Incompatible with prettier
 		'no-mixed-operators': 'off', // Incompatible with prettier
+		'no-restricted-syntax': 'off',
 		'arrow-body-style': 'off', // Not our taste?
 		'function-paren-newline': 'off', // Incompatible with prettier
 		'no-plusplus': 'off',
 		'space-before-function-paren': 0, // Incompatible with prettier
 
-		'max-len': ['error', 100, 2, { ignoreUrls: true, }], // airbnb is allowing some edge cases
-		'no-console': 'error', // airbnb is using warn
+		'max-len': ['error', 120, 2, { ignoreUrls: true, }], // airbnb is allowing some edge cases
+		'no-console': ['error', { allow: ["warn", "error"] }], // airbnb is using warn
 		'no-alert': 'error', // airbnb is using warn
 
 		'no-param-reassign': 'off', // Not our taste?
 		'radix': 'off', // parseInt, parseFloat radix turned off. Not my taste.
 
+		'react/prop-types': 'off',
+		'react/no-array-index-key': 'off',
 		'react/require-default-props': 'off', // airbnb use error
 		'react/forbid-prop-types': 'off', // airbnb use error
 		'react/jsx-filename-extension': ['error', { extensions: ['.js'] }], // airbnb is using .jsx
