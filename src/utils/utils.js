@@ -1,4 +1,4 @@
-export const NoData = '<span class="loading-dots">...</span>';
+export const NoData = '...';
 
 export const DefaultGame = {
   nr: NoData,
@@ -100,5 +100,25 @@ export const Utils = {
       return `${currency} ${amount}`;
     }
     return 'N/A';
+  },
+
+  /**
+   * Activate loading spinner
+   */
+  activeLoading() {
+    const loadingLayer = document.querySelector('div.loading');
+    if (loadingLayer) {
+      loadingLayer.classList.add('loading__enable');
+    }
+  },
+
+  /**
+   * Disable loading spinner
+   */
+  disableLoading() {
+    const loadingLayer = document.querySelector('div.loading');
+    if (loadingLayer) {
+      loadingLayer.classList.remove('loading__enable');
+    }
   }
 };

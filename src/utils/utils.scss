@@ -1,0 +1,26 @@
+$background-color: #FFF;
+$primary-color: #339911;
+$item-border: 2px solid $primary-color;
+$item-border__light: 1px solid $primary-color;
+
+$breakpoints: (
+  'small' : ( min-width:  640px ),
+  'medium' : ( min-width:  800px ),
+  'large' : ( min-width: 1200px )
+);
+
+@mixin case-bigger-than($name) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}

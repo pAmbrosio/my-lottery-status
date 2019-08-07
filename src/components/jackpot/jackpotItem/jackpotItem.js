@@ -17,14 +17,16 @@ class JackpotItem extends Component {
 
   /**
    * Draw winning numbers if needed
-   * @param {object} numberList
+   * @param {boolean} next if next, not shown
+   * @param {array} numberList
+   * @param {array} euroNumbersList
    */
-  numbers(numbersList) {
-    if (numbersList) {
+  numbers(next, numbersList, euroNumbersList) {
+    if (!next && numbersList) {
       return (
         <JackpotNumbers
-          numbers={numbersList.numbers}
-          euroNumbers={numbersList.euroNumbers}
+          numbers={numbersList}
+          euroNumbers={euroNumbersList}
         />
       );
     }
@@ -33,10 +35,11 @@ class JackpotItem extends Component {
 
   /**
    * Draw prizes if needed
+   * @param {boolean} next if next, not shown
    * @param {object} prizesList
    */
-  prizes(prizesList) {
-    if (prizesList) {
+  prizes(next, prizesList) {
+    if (!next && prizesList) {
       return (
         <JackpotPrizes
           odds={prizesList}
@@ -58,8 +61,8 @@ class JackpotItem extends Component {
           closingDate={props.data.closingDate}
           totalWinners={props.data.Winners}
         />
-        {this.numbers(props.data.numbers)}
-        {this.prizes(props.data.odds)}
+        {this.numbers(props.next, props.data.numbers, props.data.euroNumbers)}
+        {this.prizes(props.next, props.data.odds)}
 
       </article>
     );

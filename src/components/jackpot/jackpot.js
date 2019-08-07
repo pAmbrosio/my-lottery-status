@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './jackpot.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import JackpotItem from './jackpotItem/jackpotItem';
-import { DefaultGame } from '../../utils/utils';
+import { DefaultGame, Utils } from '../../utils/utils';
 
 /**
  * Jackpot page
@@ -31,9 +31,17 @@ class Jackpot extends Component {
 
   /**
    * Load data from server and update component state
+   * if can't retrive data (CORS) will loop and take data from local mock to demo purpose
+   * @param {boolean} loop demo purpose, default true
    */
-  updateJackpotData () {
-    fetch('http://localhost:8080/public/data/eurojackpot-status.json')
+  updateJackpotData (loop = true) {
+    Utils.activeLoading();
+    let url = 'https://media.lottoland.com/api/drawings/euroJackpot';
+    if (!loop) {
+      url = 'http://localhost:8080/public/data/eurojackpot-status.json';
+      console.warn('loading mock data');
+    }
+    fetch(url)
       .then((response) => {
         if (response && response.status === 200) {
           return response.json();
@@ -42,10 +50,14 @@ class Jackpot extends Component {
       })
       .then((result) => {
         this.setState(result);
+        Utils.disableLoading();
       })
       .catch((e) => {
         console.error(`Error: ${e}`);
-        return false;
+        Utils.disableLoading();
+        if (e.message === 'Failed to fetch' && loop) {
+          this.updateJackpotData(false);
+        }
       });
   }
 

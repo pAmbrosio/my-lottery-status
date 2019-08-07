@@ -55,6 +55,8 @@ class JackpotNumbers extends Component {
       <div className="jackpot-item__numbers">
         <ul>
           {this.numbersList(props.numbers)}
+        </ul>
+        <ul>
           {this.euroNumbersList(props.euroNumbers)}
         </ul>
       </div>
